@@ -44,7 +44,7 @@ Response Payload which returns JSON, based on the input file kept in resources f
 ]
 
 
-7. Output.csv is the filer header which combination of fields as given below:
+7. Output.csv has the fild header which combination of fields as given below:
 
 The CSV has the following Headers - Client_Information - Product_Information - Total_Transaction_Amount
 Client_Information should be a combination of the CLIENT TYPE, CLIENT NUMBER, ACCOUNT NUMBER, SUBACCOUNT NUMBER fields from Input file
