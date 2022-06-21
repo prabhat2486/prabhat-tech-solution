@@ -1,0 +1,52 @@
+1. Output.csv is placed in the root folder
+2. input.txt is place in resources folder
+3. Unit tests are located in src/test folder
+
+4. This is maven project, so in order to run this, JDK 8 and Maven (3.6 or later) is needed.
+
+5. A simple Dockerfile to create app.jar is in project folder, this is using jdk 8. This could be trigger from CI/CD pipeline . To test it locally, following commands could be used:
+
+docker build -t prabhat-tech-solution/daily-transaction-summary .
+
+6. After running the application, the endpoint is exposed as  /dailySummary
+
+HTTP GET
+localhost:8080/dailySummary
+
+Response Payload which returns JSON, based on the input file kept in resources folder:
+
+[
+    {
+        "total_Transaction_Amount": "46",
+        "client_Information": "CL  432100020001",
+        "product_Information": "SGX FUNK    20100910"
+    },
+    {
+        "total_Transaction_Amount": "-215",
+        "client_Information": "CL  123400030001",
+        "product_Information": "CME FUNK.   20100910"
+    },
+    {
+        "total_Transaction_Amount": "285",
+        "client_Information": "CL  123400030001",
+        "product_Information": "CME FUN1    20100910"
+    },
+    {
+        "total_Transaction_Amount": "-79",
+        "client_Information": "CL  432100030001",
+        "product_Information": "CME FUN1    20100910"
+    },
+    {
+        "total_Transaction_Amount": "-52",
+        "client_Information": "CL  123400020001",
+        "product_Information": "SGX FUNK    20100910"
+    }
+]
+
+
+7. Output.csv is the filer header which combination of fields as given below:
+
+The CSV has the following Headers - Client_Information - Product_Information - Total_Transaction_Amount
+Client_Information should be a combination of the CLIENT TYPE, CLIENT NUMBER, ACCOUNT NUMBER, SUBACCOUNT NUMBER fields from Input file
+Product_Information should be a combination of the EXCHANGE CODE, PRODUCT GROUP CODE, SYMBOL, EXPIRATION DATE Total_Transaction_Amount should be
+a Net Total of the (QUANTITY LONG - QUANTITY SHORT) values for each client per product
