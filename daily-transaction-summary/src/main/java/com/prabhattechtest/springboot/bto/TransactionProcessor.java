@@ -21,6 +21,10 @@ public class TransactionProcessor {
     private final String INPUT_FILE_PATH = "input.txt";
     private final String OUTPUT_FILE_PATH = "Output.csv";
 
+    /*
+    Processes input file and writes daily summary in Output.csv
+    returns Transaction array which is used by DailySummary controller to return JSON response.
+     */
     public ArrayList<DailySummary> getDailySummary() throws IOException, URISyntaxException {
 
         HashMap<Client, HashMap<Product, Transaction>> summary = new HashMap<>();
@@ -35,6 +39,9 @@ public class TransactionProcessor {
         return prepareDailySummary(summary);
     }
 
+    /*
+    Add Daily Transaction Summary to Map.
+     */
     private void addTransactionToSummary(HashMap<Client, HashMap<Product, Transaction>> summary, Client client, Product product, Transaction transaction){
         if(summary.containsKey(client)){
             HashMap<Product, Transaction> p = summary.get(client);
@@ -51,6 +58,10 @@ public class TransactionProcessor {
         }
     }
 
+
+    /*
+    Writes Output.csv based on Summary Map processed after reading input file.
+     */
     private ArrayList<DailySummary> prepareDailySummary(HashMap<Client, HashMap<Product, Transaction>> summary) throws IOException {
 
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(OUTPUT_FILE_PATH)));
