@@ -4,7 +4,9 @@ public class FieldDefinition {
 
     /*
     As per the Field Specification PDF
-     */
+    Field Definition suggests the START and END INDEX of the field in the input file considering first character as 1
+    Field Definition is used by Object Readers to parse the fields from specific START and END position
+    */
     public static final int CLIENT_TYPE_STARTS = 4;
     public static final int CLIENT_TYPE_ENDS = 7;
 
