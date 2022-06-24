@@ -21,7 +21,7 @@ public class DailySummaryController {
 	/dailySummary returns JSON response similar to written in Output.csv
 	 */
 	@GetMapping("/dailySummary")
-	public ResponseEntity output() {
+	public ResponseEntity dailySummary() {
 		TransactionProcessor txnProcessor = new TransactionProcessor();
 		try {
 			ArrayList<DailySummary> dailySummary = txnProcessor.getDailySummary();
